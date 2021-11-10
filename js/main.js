@@ -12,10 +12,15 @@ const numbers = display.querySelector('.numbers');
 const userNum = [];
 let timeID;
 
-// creare 5 numeri randomici
+// creare 5 numeri randomici tra 1 e 100
 const randNumbers = [];
 for (let i = 1; i < 6; i++) {
-    randNumbers.push(Math.floor(Math.random() * 99) +1);
+    let n = Math.floor(Math.random() * 99) +1;
+    if (!randNumbers.includes(n)) {
+        randNumbers.push(n);
+    } else {
+        i--;
+    }
 }
 
 // stampare nel display tutti i numeri generati
@@ -25,11 +30,12 @@ randNumbers.forEach((x, i) => {
 
 // dopo 30 secondi resettare il contenuto del display
 // setTimeout(() => numbers.innerText = '', 10000);
-setTimeout(getUserNumbers, 5000);
+// setTimeout(getUserNumbers, 7000);
 
 
 // chiedere 5 volte un input numerico all'utente
 function getUserNumbers() {
+    console.log(randNumbers);
     numbers.innerText = '';
     for(let i = 0; i < 5; i++) {
         let num = 0;
@@ -42,4 +48,5 @@ function getUserNumbers() {
         }
         console.log(userNum);
     }
+
 }
