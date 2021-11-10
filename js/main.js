@@ -30,7 +30,7 @@ randNumbers.forEach((x, i) => {
 
 // dopo 30 secondi resettare il contenuto del display
 // setTimeout(() => numbers.innerText = '', 10000);
-// setTimeout(getUserNumbers, 7000);
+setTimeout(getUserNumbers, 7000);
 
 
 // chiedere 5 volte un input numerico all'utente
@@ -40,13 +40,24 @@ function getUserNumbers() {
     for(let i = 0; i < 5; i++) {
         let num = 0;
         do {
-            num = parseInt(prompt('Inserisci i numeri che ricordi!'));
+            num = parseInt(prompt(
+                `Inserisci i numeri che ricordi! hai solo cinque tentativi. I numeri doppi non vengono conteggiati. Se inserisci un numero diverso da un numero, ti diamo un'altra possibilità`));
         } while (isNaN(num)) 
-    
-        if (randNumbers.includes(num)) {
+// se il numero inserito dall'utente è presente nella lista deinumeri E se non è già presente nella lista dei numeri utente, allora lo inserisce nella lista dei numeri utente
+        if (randNumbers.includes(num) && (!userNum.includes(num))) {
             userNum.push(num);
+            console.log(userNum);
         }
-        console.log(userNum);
     }
+
+    // se hai indoviato tutti i numeri hai vinto
+        if (randNumbers.length === userNum.length) {
+            numbers.innerText = `complimenti! ti sei ricordato tutti e 5 i numeri!`;
+    // se ne hai indovinati meno, hai perso
+        } else if (randNumbers.length > userNum.length) {
+            numbers.innerText = `peccato! non hai ricordato tutti e 5 i numeri!`;
+        } else if ((randNumbers.length < userNum.length)) {
+            numbers.innerText = `ti sei ricordato più numeri di quanti fossero all'inizio, sei un genio!`;
+        }
 
 }
