@@ -30,20 +30,22 @@ randNumbers.forEach((x, i) => {
 
 // dopo 30 secondi resettare il contenuto del display
 // setTimeout(() => numbers.innerText = '', 10000);
-setTimeout(getUserNumbers, 7000);
+setTimeout(getUserNumbers, 2000);
 
 
 // chiedere 5 volte un input numerico all'utente
 function getUserNumbers() {
     console.log(randNumbers);
     numbers.innerText = '';
+
     for(let i = 0; i < 5; i++) {
         let num = 0;
         do {
             num = parseInt(prompt(
                 `Inserisci i numeri che ricordi! hai solo cinque tentativi. I numeri doppi non vengono conteggiati. Se inserisci un numero diverso da un numero, ti diamo un'altra possibilità`));
+                // se il valore inserito non è un numero, verrà richiesto l'inserimento di un numero
         } while (isNaN(num)) 
-// se il numero inserito dall'utente è presente nella lista deinumeri E se non è già presente nella lista dei numeri utente, allora lo inserisce nella lista dei numeri utente
+// se il numero inserito dall'utente è presente nella lista dei numerioriginali E se non è già presente nella lista dei numeri utente, allora lo inserisce nella lista dei numeri utente
         if (randNumbers.includes(num) && (!userNum.includes(num))) {
             userNum.push(num);
             console.log(userNum);
@@ -52,12 +54,13 @@ function getUserNumbers() {
 
     // se hai indoviato tutti i numeri hai vinto
         if (randNumbers.length === userNum.length) {
-            numbers.innerText = `complimenti! ti sei ricordato tutti e 5 i numeri!`;
+            numbers.innerHTML = `<h2>Complimenti!<br> ti sei ricordato tutti e 5 i numeri!</h2>`;
     // se ne hai indovinati meno, hai perso
         } else if (randNumbers.length > userNum.length) {
-            numbers.innerText = `peccato! non hai ricordato tutti e 5 i numeri!`;
+            numbers.innerHTML = `<h2>Peccato!<br> hai ricordato solo ${userNum.length} numeri!</h2>`;
+    // se hai indovinato più numeri di quelli all'inizio sei un genio èovviamente uno scherzetto, non si può mai verificare questa condizione!
         } else if ((randNumbers.length < userNum.length)) {
-            numbers.innerText = `ti sei ricordato più numeri di quanti fossero all'inizio, sei un genio!`;
+            numbers.innerHTML = `<h2>Ii sei ricordato più numeri di quanti fossero all'inizio!<br> SEI UN GENIO!</h2>`;
         }
 
 }
