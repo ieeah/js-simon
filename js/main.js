@@ -6,4 +6,12 @@
 // * Dividete in piccoli problemi la consegna.
 // * Individuate gli elementi di cui avete bisogno per realizzare il programma.
 
-for 
+// refs to DOM
+const display = document.querySelector('.display');
+let timeID;
+
+// creare 5 numeri randomici
+const randNumbers = [];
+for (let i = 1; i < 6; i++) {
+    randNumbers.push(Math.floor(Math.random() * 100) +1);
+}
