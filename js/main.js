@@ -9,6 +9,7 @@
 // refs to DOM
 const display = document.querySelector('.display');
 const numbers = display.querySelector('.numbers');
+const userNum = [];
 let timeID;
 
 // creare 5 numeri randomici
@@ -23,5 +24,22 @@ randNumbers.forEach((x, i) => {
 });
 
 // dopo 30 secondi resettare il contenuto del display
-setTimeout(() => numbers.innerText = '', 30000);
+// setTimeout(() => numbers.innerText = '', 10000);
+setTimeout(getUserNumbers, 5000);
 
+
+// chiedere 5 volte un input numerico all'utente
+function getUserNumbers() {
+    numbers.innerText = '';
+    for(let i = 0; i < 5; i++) {
+        let num = 0;
+        do {
+            num = parseInt(prompt('Inserisci i numeri che ricordi!'));
+        } while (isNaN(num)) 
+    
+        if (randNumbers.includes(num)) {
+            userNum.push(num);
+        }
+        console.log(userNum);
+    }
+}
