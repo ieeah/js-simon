@@ -8,6 +8,7 @@
 
 // refs to DOM
 const display = document.querySelector('.display');
+const numbers = display.querySelector('.numbers');
 let timeID;
 
 // creare 5 numeri randomici
@@ -15,3 +16,12 @@ const randNumbers = [];
 for (let i = 1; i < 6; i++) {
     randNumbers.push(Math.floor(Math.random() * 100) +1);
 }
+
+// stampare nel display tutti i numeri generati
+numbers.innerText = randNumbers;
+
+// dopo 30 secondi resettare il contenuto del display
+setTimeout(() => {
+    numbers.innerText = '';
+}, 30000);
+
