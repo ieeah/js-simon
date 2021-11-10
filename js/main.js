@@ -10,6 +10,7 @@
 const display = document.querySelector('.display');
 const numbers = display.querySelector('.numbers');
 const userNum = [];
+const resetBtn = document.querySelector('#reset');
 let timeID;
 
 // creare 5 numeri randomici tra 1 e 100
@@ -35,9 +36,6 @@ setTimeout(getUserNumbers, 2000);
 
 // chiedere 5 volte un input numerico all'utente
 function getUserNumbers() {
-    console.log(randNumbers);
-    numbers.innerText = '';
-
     for(let i = 0; i < 5; i++) {
         let num = 0;
         do {
