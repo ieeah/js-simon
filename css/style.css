@@ -13,6 +13,12 @@ body {
     width: 100vw;
     background-color: lightseagreen;
 }
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
 
 .display {
     height: 300px;
@@ -33,6 +39,11 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+}
+
+.numbers .flex label {
+    font-size: 1rem;
+    align-self: flex-start;
 }
 
 .actions {

@@ -13,6 +13,9 @@ const userNum = [];
 const resetBtn = document.querySelector('#reset');
 let timeID;
 
+// refs to input
+
+
 // creare 5 numeri randomici tra 1 e 100
 const randNumbers = [];
 for (let i = 1; i < 6; i++) {
@@ -30,8 +33,12 @@ randNumbers.forEach((x, i) => {
 });
 
 // dopo 30 secondi resettare il contenuto del display
-// setTimeout(() => numbers.innerText = '', 10000);
-setTimeout(getUserNumbers, 2000);
+setTimeout(() => numbers.innerHTML = ``, 5000);
+
+
+// IN CASO DI ENORMI CAZZI RIPRISTINARE TUTTO CIO' CHE C'è SOTTO
+
+setTimeout(getUserNumbers, 5050);
 
 
 // chiedere 5 volte un input numerico all'utente
@@ -53,9 +60,11 @@ function getUserNumbers() {
     // se hai indoviato tutti i numeri hai vinto
         if (randNumbers.length === userNum.length) {
             numbers.innerHTML = `<h2>Complimenti!<br> ti sei ricordato tutti e 5 i numeri!</h2>`;
+            window.location.reload(false);
     // se ne hai indovinati meno, hai perso
         } else if (randNumbers.length > userNum.length) {
-            numbers.innerHTML = `<h2>Peccato!<br> hai ricordato solo ${userNum.length} numeri!</h2>`;
+            numbers.innerHTML = `<h2>Peccato non hai vinto!<br> hai ricordato ${userNum.length} numeri!</h2>`;
+            window.location.reload(false);
     // se hai indovinato più numeri di quelli all'inizio sei un genio èovviamente uno scherzetto, non si può mai verificare questa condizione!
         } else if ((randNumbers.length < userNum.length)) {
             numbers.innerHTML = `<h2>Ii sei ricordato più numeri di quanti fossero all'inizio!<br> SEI UN GENIO!</h2>`;
