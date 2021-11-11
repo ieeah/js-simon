@@ -13,9 +13,7 @@ const userNum = [];
 const resetBtn = document.querySelector('#reset');
 let timeID;
 
-// refs to input
-
-
+resetBtn.addEventListener('click', () => window.location.reload(true));
 // creare 5 numeri randomici tra 1 e 100
 const randNumbers = [];
 for (let i = 1; i < 6; i++) {
@@ -34,10 +32,6 @@ randNumbers.forEach((x, i) => {
 
 // dopo 30 secondi resettare il contenuto del display
 setTimeout(() => numbers.innerHTML = ``, 5000);
-
-
-// IN CASO DI ENORMI CAZZI RIPRISTINARE TUTTO CIO' CHE C'è SOTTO
-
 setTimeout(getUserNumbers, 5050);
 
 
@@ -48,26 +42,25 @@ function getUserNumbers() {
         do {
             num = parseInt(prompt(
                 `Inserisci i numeri che ricordi! hai solo cinque tentativi. I numeri doppi non vengono conteggiati. Se inserisci un numero diverso da un numero, ti diamo un'altra possibilità`));
-                // se il valore inserito non è un numero, verrà richiesto l'inserimento di un numero
+        // se il valore inserito non è un numero, verrà richiesto l'inserimento di un numero
         } while (isNaN(num)) 
-// se il numero inserito dall'utente è presente nella lista dei numerioriginali E se non è già presente nella lista dei numeri utente, allora lo inserisce nella lista dei numeri utente
+        // se il numero inserito dall'utente è presente nella lista dei numerioriginali E se non è già presente nella lista dei numeri utente, allora lo inserisce nella lista dei numeri utente
         if (randNumbers.includes(num) && (!userNum.includes(num))) {
             userNum.push(num);
             console.log(userNum);
+            console.log(randNumbers);
         }
     }
 
-    // se hai indoviato tutti i numeri hai vinto
+        // se hai indoviato tutti i numeri hai vinto
         if (randNumbers.length === userNum.length) {
             numbers.innerHTML = `<h2>Complimenti!<br> ti sei ricordato tutti e 5 i numeri!</h2>`;
-            window.location.reload(false);
-    // se ne hai indovinati meno, hai perso
+        // se ne hai indovinati meno, hai perso
         } else if (randNumbers.length > userNum.length) {
             numbers.innerHTML = `<h2>Peccato non hai vinto!<br> hai ricordato ${userNum.length} numeri!</h2>`;
-            window.location.reload(false);
-    // se hai indovinato più numeri di quelli all'inizio sei un genio èovviamente uno scherzetto, non si può mai verificare questa condizione!
+        // se hai indovinato più numeri di quelli all'inizio sei un genio! è ovviamente uno scherzetto, non si può mai verificare questa condizione!
         } else if ((randNumbers.length < userNum.length)) {
             numbers.innerHTML = `<h2>Ii sei ricordato più numeri di quanti fossero all'inizio!<br> SEI UN GENIO!</h2>`;
         }
-
 }
+
